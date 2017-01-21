@@ -1,0 +1,176 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="02_frequency_analysis" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="11.0.devel">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{75.0, 40.0}">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={277, 93, 974, 632}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[740, 522]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{360.0, 251.0}">
+    </property>
+    <entity name="Spectrum" class="ptolemy.domains.sdf.lib.Spectrum">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{445.0, 170.0}">
+        </property>
+    </entity>
+    <entity name="SmoothedPeriodogram" class="ptolemy.domains.sdf.lib.SmoothedPeriodogram">
+        <property name="numberOfInputs" class="ptolemy.data.expr.Parameter" value="256">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{445.0, 235.0}">
+        </property>
+    </entity>
+    <entity name="MaximumEntropySpectrum" class="ptolemy.domains.sdf.lib.MaximumEntropySpectrum">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{445.0, 300.0}">
+        </property>
+    </entity>
+    <entity name="Sinewave" class="ptolemy.actor.lib.Sinewave">
+        <property name="frequency" class="ptolemy.actor.parameters.PortParameter" value="440.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[166.66727447509766, 140.00059509277344]">
+        </property>
+    </entity>
+    <entity name="Sinewave2" class="ptolemy.actor.lib.Sinewave">
+        <property name="frequency" class="ptolemy.actor.parameters.PortParameter" value="440.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[166.66727447509766, 215.00059509277344]">
+        </property>
+    </entity>
+    <entity name="Sinewave3" class="ptolemy.actor.lib.Sinewave">
+        <property name="frequency" class="ptolemy.actor.parameters.PortParameter" value="440.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[166.66727447509766, 285.00059509277344]">
+        </property>
+    </entity>
+    <entity name="AddSubtract" class="ptolemy.actor.lib.AddSubtract">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[310.0, 235.0]">
+        </property>
+    </entity>
+    <entity name="Gaussian" class="ptolemy.actor.lib.Gaussian">
+        <property name="standardDeviation" class="ptolemy.actor.parameters.PortParameter" value="0.02">
+        </property>
+        <doc>Create a sequence of gaussian random variables</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[70.0, 360.0]">
+        </property>
+    </entity>
+    <entity name="IIR" class="ptolemy.actor.lib.IIR">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[165.0, 360.0]">
+        </property>
+    </entity>
+    <entity name="SequencePlotter" class="ptolemy.actor.lib.gui.SequencePlotter">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={470, 278, 500, 344}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[625.0, 240.0]">
+        </property>
+        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>SequencePlotter</title>
+<xRange min="0.0" max="255.0"/>
+<yRange min="-67.51087195493845" max="20.258797504289294"/>
+</plot>?>
+        </configure>
+    </entity>
+    <entity name="Const" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="1000">
+        </property>
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[55.0, 130.0]">
+        </property>
+    </entity>
+    <entity name="Const2" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="1500">
+        </property>
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[55.0, 205.0]">
+        </property>
+    </entity>
+    <entity name="Const3" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="3500">
+        </property>
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[55.0, 275.0]">
+        </property>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+        <vertex name="vertex1" value="[364.25, 235.0]">
+        </vertex>
+    </relation>
+    <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation10" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation11" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="Spectrum.input" relation="relation6"/>
+    <link port="Spectrum.output" relation="relation7"/>
+    <link port="SmoothedPeriodogram.input" relation="relation6"/>
+    <link port="SmoothedPeriodogram.output" relation="relation8"/>
+    <link port="MaximumEntropySpectrum.input" relation="relation6"/>
+    <link port="MaximumEntropySpectrum.output" relation="relation9"/>
+    <link port="Sinewave.frequency" relation="relation10"/>
+    <link port="Sinewave.output" relation="relation"/>
+    <link port="Sinewave2.frequency" relation="relation12"/>
+    <link port="Sinewave2.output" relation="relation2"/>
+    <link port="Sinewave3.frequency" relation="relation11"/>
+    <link port="Sinewave3.output" relation="relation3"/>
+    <link port="AddSubtract.plus" relation="relation"/>
+    <link port="AddSubtract.plus" relation="relation2"/>
+    <link port="AddSubtract.plus" relation="relation3"/>
+    <link port="AddSubtract.plus" relation="relation5"/>
+    <link port="AddSubtract.output" relation="relation6"/>
+    <link port="Gaussian.output" relation="relation4"/>
+    <link port="IIR.input" relation="relation4"/>
+    <link port="IIR.output" relation="relation5"/>
+    <link port="SequencePlotter.input" relation="relation7"/>
+    <link port="SequencePlotter.input" relation="relation8"/>
+    <link port="SequencePlotter.input" relation="relation9"/>
+    <link port="Const.output" relation="relation10"/>
+    <link port="Const2.output" relation="relation12"/>
+    <link port="Const3.output" relation="relation11"/>
+</entity>
